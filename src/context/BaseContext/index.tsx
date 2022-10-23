@@ -1,14 +1,14 @@
-import { createContext, useContext, useMemo } from 'react';
+import { createContext, useContext, useMemo } from 'react'
 
 interface IContextProps {
-  something: string;
+  something: string
 }
 
 interface IMyCustomProviderProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
-export const ReactContext = createContext<IContextProps>({} as IContextProps);
+export const ReactContext = createContext<IContextProps>({} as IContextProps)
 
 export const MyCustomProvider: React.FC<IMyCustomProviderProps> = ({
   children,
@@ -24,16 +24,16 @@ export const MyCustomProvider: React.FC<IMyCustomProviderProps> = ({
     >
       {children}
     </ReactContext.Provider>
-  );
-};
+  )
+}
 
 export const useMyCustomHook = (): IContextProps => {
-  const context = useContext(ReactContext);
+  const context = useContext(ReactContext)
 
   if (!context) {
     // eslint-disable-next-line no-console
-    console.error('useMyCustomHook must be within MyCustomProvider');
+    console.error('useMyCustomHook must be within MyCustomProvider')
   }
 
-  return context;
-};
+  return context
+}

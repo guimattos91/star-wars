@@ -1,21 +1,21 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'
 
-import { StyleH2, StyleCard, InputStyled, InputMaskStyled } from './styles';
+import { StyleH2, StyleCard, InputStyled, InputMaskStyled } from './styles'
 
 export type FormType = {
-  name: string;
-  email: string;
-  cpf: string;
-  phone: string;
-};
+  name: string
+  email: string
+  cpf: string
+  phone: string
+}
 
 const PersonalInformation: React.FC = () => {
   const {
     register,
     formState: { errors },
-  } = useForm<FormType>();
+  } = useForm<FormType>()
 
   return (
     <StyleCard className="p-3">
@@ -26,6 +26,7 @@ const PersonalInformation: React.FC = () => {
         <InputStyled
           type="text"
           id="nome"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('name', { required: 'Informe seu nome' })}
           required
         />
@@ -37,6 +38,7 @@ const PersonalInformation: React.FC = () => {
         <InputStyled
           type="email"
           id="email"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('email', { required: 'Informe seu e-mail' })}
           className="mb-2"
           required
@@ -49,6 +51,7 @@ const PersonalInformation: React.FC = () => {
         <InputMaskStyled
           id="phone"
           mask="(99)99999-9999"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('phone', { required: 'Informe seu Telefone' })}
           className="mb-2"
           required
@@ -61,6 +64,7 @@ const PersonalInformation: React.FC = () => {
         <InputMaskStyled
           id="cpf"
           mask="999.999.999-99"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('cpf', { required: 'Informe seu CPF' })}
           className="mb-2"
           required
@@ -68,7 +72,7 @@ const PersonalInformation: React.FC = () => {
         {errors.cpf && <p>{errors.cpf.message}</p>}
       </div>
     </StyleCard>
-  );
-};
+  )
+}
 
-export default memo(PersonalInformation);
+export default memo(PersonalInformation)

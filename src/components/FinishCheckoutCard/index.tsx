@@ -1,13 +1,13 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { StyleCard, ManufacturerTitle, TitleCard, ButtonStyle } from './styles';
+import { StyleCard, ManufacturerTitle, TitleCard, ButtonStyle } from './styles'
 
 export type FormType = {
-  namecard: string;
-  cardnumber: string;
-  valid: string;
-  safety: string;
-};
+  namecard: string
+  cardnumber: string
+  valid: string
+  safety: string
+}
 
 const FinishCheckoutCard: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const FinishCheckoutCard: React.FC = () => {
         <ButtonStyle type="submit"> Finalizar compra</ButtonStyle>
       </div>
     </StyleCard>
-  );
-};
+  )
+}
 
-export default memo(FinishCheckoutCard);
+export default memo(FinishCheckoutCard)

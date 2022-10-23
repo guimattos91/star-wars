@@ -1,8 +1,8 @@
-import { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react'
 
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'
 
-import CepApi from 'services/CepApi';
+import CepApi from 'services/CepApi'
 
 import {
   StyleH2,
@@ -10,7 +10,7 @@ import {
   InputStyled,
   InputMaskStyled,
   InputStyledSmall,
-} from './styles';
+} from './styles'
 
 export type FormType = {
   cep: string;
@@ -22,7 +22,7 @@ export type FormType = {
   bairro: string;
   cidade: string;
   estado: string;
-};
+}
 
 const AdressCard: React.FC = () => {
   const {
@@ -30,10 +30,10 @@ const AdressCard: React.FC = () => {
     watch,
     setValue,
     formState: { errors },
-  } = useForm<FormType>();
+  } = useForm<FormType>()
 
-  const cepValue = watch('cep');
-  const [lastCep, setLastCep] = useState('');
+  const cepValue = watch('cep')
+  const [lastCep, setLastCep] = useState('')
   const fetchAddress = useCallback(
     async (cep: string) => {
       const { data } = await CepApi.get(`/${cep}/json/`);
@@ -43,7 +43,7 @@ const AdressCard: React.FC = () => {
       setValue('cidade', data.localidade);
     },
     [setValue],
-  );
+  )
 
   useEffect(() => {
     const sanitizedCEP = cepValue?.replaceAll(/\D/g, '');

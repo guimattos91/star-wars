@@ -1,11 +1,11 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-import Logo from 'assets/space-motors-logo.png';
+import Logo from 'assets/space-motors-logo.png'
 
-import { PGray, PWhite, StyleFooter } from './styles';
+import { PGray, PWhite, StyleFooter } from './styles'
 
 const Footer: React.FC = () => {
   return (
@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
         </Row>
       </Container>
     </StyleFooter>
-  );
-};
+  )
+}
 
-export default memo(Footer);
+export default memo(Footer)

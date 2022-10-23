@@ -1,6 +1,6 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'
 
 import {
   StyleH2,
@@ -8,20 +8,20 @@ import {
   InputStyled,
   InputStyledSmall,
   InputMaskStyledSmall,
-} from './styles';
+} from './styles'
 
 export type FormType = {
-  namecard: string;
-  cardnumber: string;
-  valid: string;
-  safety: string;
-};
+  namecard: string
+  cardnumber: string
+  valid: string
+  safety: string
+}
 
 const PaymentsCard: React.FC = () => {
   const {
     register,
     formState: { errors },
-  } = useForm<FormType>();
+  } = useForm<FormType>()
 
   return (
     <StyleCard className="p-3">
@@ -32,6 +32,7 @@ const PaymentsCard: React.FC = () => {
         <InputStyled
           type="text"
           id="nomecartão"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('namecard', { required: 'Informe seu nome' })}
           required
         />
@@ -43,6 +44,7 @@ const PaymentsCard: React.FC = () => {
         <InputStyled
           type="cardnumber"
           id="cardnumber"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('cardnumber', {
             required: 'Informe o número de seu cartão',
           })}
@@ -59,6 +61,7 @@ const PaymentsCard: React.FC = () => {
             <InputMaskStyledSmall
               mask="99/99"
               id="valid"
+              // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('valid', {
                 required: 'Informe a data do seu cartão',
               })}
@@ -74,6 +77,7 @@ const PaymentsCard: React.FC = () => {
           <div className="mb-2">
             <InputStyledSmall
               id="safety"
+              // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('safety', { required: 'Informe seu CPF' })}
               className="mb-2"
               required
@@ -83,7 +87,7 @@ const PaymentsCard: React.FC = () => {
         </div>
       </div>
     </StyleCard>
-  );
-};
+  )
+}
 
-export default memo(PaymentsCard);
+export default memo(PaymentsCard)

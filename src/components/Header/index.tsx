@@ -1,11 +1,11 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-import Logo from 'assets/space-motors-logo.png';
+import Logo from 'assets/space-motors-logo.png'
 
-import { StyleHeader } from './styles';
+import { StyleHeader } from './styles'
 
 const Header: React.FC = () => {
   return (
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
         </Row>
       </Container>
     </StyleHeader>
-  );
-};
+  )
+}
 
-export default memo(Header);
+export default memo(Header)

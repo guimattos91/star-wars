@@ -1,17 +1,17 @@
-import ReactPaginate from 'react-paginate';
-import styled from 'styled-components';
+import ReactPaginate from 'react-paginate'
+import styled from 'styled-components'
 
-import Banner from 'assets/Banner.png';
+import Banner from 'assets/Banner.png'
 
 export const StyleMain = styled.main`
   background-color: #282a36;
-`;
+`
 export const BgImg = styled.div`
   background-image: url(${Banner});
   height: 320px;
   background-size: cover;
   background-position: center;
-`;
+`
 
 export const DivSearch = styled.div`
   border: none;
@@ -21,7 +21,7 @@ export const DivSearch = styled.div`
   margin-top: -50px;
   flex: flex;
   flex-grow: 1;
-`;
+`
 export const InputStyle = styled.input`
   border: none;
   background-color: white;
@@ -30,7 +30,7 @@ export const InputStyle = styled.input`
   margin-right: 0.5em;
   flex: flex;
   flex-grow: 1;
-`;
+`
 export const ButtonStyle = styled.button`
   background-color: #f4e426;
   border: none;
@@ -38,7 +38,7 @@ export const ButtonStyle = styled.button`
   p {
     margin: 0;
   }
-`;
+`
 
 export const Pagination = styled(ReactPaginate)`
   display: flex;
@@ -74,4 +74,4 @@ export const Pagination = styled(ReactPaginate)`
       color: black;
     }
   }
-`;
+`

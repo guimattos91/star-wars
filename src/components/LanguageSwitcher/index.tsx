@@ -1,9 +1,9 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 
 const LanguageSwitcher: React.FC = () => {
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation()
 
   return (
     <div>
@@ -15,7 +15,7 @@ const LanguageSwitcher: React.FC = () => {
       </button>
       <p>{i18n.resolvedLanguage}</p>
     </div>
-  );
-};
+  )
+}
 
-export default memo(LanguageSwitcher);
+export default memo(LanguageSwitcher)

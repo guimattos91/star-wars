@@ -1,6 +1,6 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { VehicleType } from 'types/VehicleType';
+import { VehicleType } from 'types/VehicleType'
 
 import {
   CardBody,
@@ -9,10 +9,10 @@ import {
   ManufacturerTitle,
   PriceCard,
   TitleCard,
-} from './styles';
+} from './styles'
 
 interface IVehiclesProps {
-  vehicle: VehicleType;
+  vehicle: VehicleType
 }
 
 const VehicleCard: React.FC<IVehiclesProps> = ({ vehicle }) => (
@@ -47,6 +47,6 @@ const VehicleCard: React.FC<IVehiclesProps> = ({ vehicle }) => (
     </ListStyle>
     <PriceCard className="pt-3">¢ {vehicle.cost_in_credits}</PriceCard>
   </CardBody>
-);
+)
 
-export default memo(VehicleCard);
+export default memo(VehicleCard)
