@@ -2,10 +2,11 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from 'react'
+
+import { normalizeVehicleData } from 'helpers'
 
 import Api from 'services/Api'
 
@@ -46,19 +47,16 @@ export const VehiclesProvider: React.FC<IvehiclesProviderProps> = ({
     }
 
     try {
-      const response = await Api.get('/', { params })
-      setvehicles(response.data.results)
-      setTotalPages(response.data.count / 10)
+      const {
+        data: { results, count },
+      } = await Api.get('/', { params })
+      setvehicles(normalizeVehicleData(results))
+      setTotalPages(count / 10)
     } catch {
       setError('Erro: Veículo não encontrado')
     } finally {
       setIsLoading(false)
     }
-  }, [])
-
-  useEffect(() => {
-    fetchVehicles(1)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

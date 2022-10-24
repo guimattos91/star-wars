@@ -20,7 +20,7 @@ const VehicleCard: React.FC<IVehiclesProps> = ({ vehicle }) => (
     <ManufacturerTitle className="pt-3">
       {vehicle.manufacturer}
     </ManufacturerTitle>
-    <LinkStyled to="/checkout">
+    <LinkStyled to={`/checkout/${vehicle.id}`}>
       <TitleCard className="pb-2 fs-3">{vehicle.model}</TitleCard>
     </LinkStyled>
     <ListStyle>

@@ -13,15 +13,15 @@ import {
 } from './styles'
 
 export type FormType = {
-  cep: string;
-  número: string;
-  cpf: string;
-  phone: string;
-  logradouro: string;
-  complemento: string;
-  bairro: string;
-  cidade: string;
-  estado: string;
+  cep: string
+  número: string
+  cpf: string
+  phone: string
+  logradouro: string
+  complemento: string
+  bairro: string
+  cidade: string
+  estado: string
 }
 
 const AdressCard: React.FC = () => {
@@ -36,23 +36,23 @@ const AdressCard: React.FC = () => {
   const [lastCep, setLastCep] = useState('')
   const fetchAddress = useCallback(
     async (cep: string) => {
-      const { data } = await CepApi.get(`/${cep}/json/`);
-      setValue('logradouro', data.logradouro);
-      setValue('bairro', data.bairro);
-      setValue('estado', data.uf);
-      setValue('cidade', data.localidade);
+      const { data } = await CepApi.get(`/${cep}/json/`)
+      setValue('logradouro', data.logradouro)
+      setValue('bairro', data.bairro)
+      setValue('estado', data.uf)
+      setValue('cidade', data.localidade)
     },
     [setValue],
   )
 
   useEffect(() => {
-    const sanitizedCEP = cepValue?.replaceAll(/\D/g, '');
+    const sanitizedCEP = cepValue?.replaceAll(/\D/g, '')
     if (sanitizedCEP?.length === 8 && cepValue !== lastCep) {
-      setLastCep(cepValue);
-      fetchAddress(sanitizedCEP);
+      setLastCep(cepValue)
+      fetchAddress(sanitizedCEP)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cepValue]);
+  }, [cepValue])
 
   return (
     <StyleCard className="p-3">
@@ -64,6 +64,7 @@ const AdressCard: React.FC = () => {
         <InputMaskStyled
           id="cep"
           mask="99999-999"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('cep', { required: 'Informe seu Cep' })}
           className="mb-2"
           required
@@ -76,6 +77,7 @@ const AdressCard: React.FC = () => {
         <InputStyled
           type="text"
           id="logradouro"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('logradouro', { required: 'Informe seu logradouro' })}
           required
         />
@@ -91,6 +93,7 @@ const AdressCard: React.FC = () => {
             <InputStyledSmall
               type="text"
               id="número"
+              // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('número', { required: 'Informe seu número' })}
               required
             />
@@ -106,6 +109,7 @@ const AdressCard: React.FC = () => {
             <InputStyledSmall
               type="text"
               id="complemento"
+              // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('complemento')}
             />
           </div>
@@ -117,6 +121,7 @@ const AdressCard: React.FC = () => {
         <InputStyled
           type="text"
           id="bairro"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('bairro', { required: 'Informe seu Bairro' })}
           required
         />
@@ -128,6 +133,7 @@ const AdressCard: React.FC = () => {
         <InputStyled
           type="text"
           id="cidade"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('cidade', { required: 'Informe sua cidade' })}
           required
         />
@@ -139,13 +145,14 @@ const AdressCard: React.FC = () => {
         <InputStyled
           type="text"
           id="estado"
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('estado', { required: 'Informe seu estado' })}
           required
         />
         {errors.estado && <p>{errors.estado.message}</p>}
       </div>
     </StyleCard>
-  );
-};
+  )
+}
 
-export default memo(AdressCard);
+export default memo(AdressCard)

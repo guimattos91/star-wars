@@ -11,4 +11,5 @@ export type VehicleType = {
   consumables: string
   vehicle_class: string
   url: string
+  id: string
 }

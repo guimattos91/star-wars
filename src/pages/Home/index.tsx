@@ -77,7 +77,7 @@ const Home: React.FC = () => {
               </DivSearch>
             </Col>
           </Row>
-          <Row className="d-flex justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 pb-4">
+          <Row className="d-flex justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 pb-4">
             {isLoading && (
               <div className="d-flex justify-content-center">
                 <img
@@ -104,9 +104,10 @@ const Home: React.FC = () => {
                   consumables: string
                   vehicle_class: string
                   url: string
+                  id: string
                 }) => (
                   <Col
-                    key={vehicle.name}
+                    key={vehicle.id}
                     className="d-flex justify-content-center"
                   >
                     <VehicleCard vehicle={vehicle} />
