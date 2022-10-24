@@ -14,11 +14,13 @@ import { VehicleType } from 'types/VehicleType'
 
 interface IContextProps {
   vehicles: VehicleType[]
+  vehicle: VehicleType | undefined
   error: string | null
   isLoading: boolean
   totalPages: number
   currentPage: number
   fetchVehicles: (page: number, search?: string) => Promise<void>
+  fetchVehicle: (id: number | string) => Promise<void>
 }
 
 interface IvehiclesProviderProps {
@@ -31,6 +33,7 @@ export const VehiclesProvider: React.FC<IvehiclesProviderProps> = ({
   children,
 }) => {
   const [vehicles, setvehicles] = useState<VehicleType[]>([])
+  const [vehicle, setvehicle] = useState<VehicleType>()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
@@ -59,18 +62,43 @@ export const VehiclesProvider: React.FC<IvehiclesProviderProps> = ({
     }
   }, [])
 
+  const fetchVehicle = useCallback(async (id: number | string) => {
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await Api.get(`/${id}`)
+      setvehicle(response.data)
+    } catch {
+      setError('Erro: Veículo não encontrado')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
   return (
     <ReactContext.Provider
       value={useMemo(
         () => ({
           vehicles,
+          vehicle,
           isLoading,
           totalPages,
           currentPage,
           error,
           fetchVehicles,
+          fetchVehicle,
         }),
-        [vehicles, isLoading, totalPages, currentPage, error, fetchVehicles],
+        [
+          vehicles,
+          vehicle,
+          isLoading,
+          totalPages,
+          currentPage,
+          error,
+          fetchVehicles,
+          fetchVehicle,
+        ],
       )}
     >
       {children}
