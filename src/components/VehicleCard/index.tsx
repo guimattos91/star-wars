@@ -20,9 +20,14 @@ const VehicleCard: React.FC<IVehiclesProps> = ({ vehicle }) => (
     <ManufacturerTitle className="pt-3">
       {vehicle.manufacturer}
     </ManufacturerTitle>
-    <LinkStyled to={`/checkout/${vehicle.id}`}>
-      <TitleCard className="pb-2 fs-3">{vehicle.model}</TitleCard>
-    </LinkStyled>
+    {vehicle.cost_in_credits !== 'unknown' && (
+      <LinkStyled to={`/checkout/${vehicle.id}`}>
+        <TitleCard className="pb-2 fs-3 d-flex ">{vehicle.model}</TitleCard>
+      </LinkStyled>
+    )}
+    {vehicle.cost_in_credits === 'unknown' && (
+      <TitleCard className="pb-2 fs-3 d-flex ">{vehicle.model}</TitleCard>
+    )}
     <ListStyle>
       <li className="d-flex justify-content-between">
         <p>Largura</p>
@@ -45,7 +50,12 @@ const VehicleCard: React.FC<IVehiclesProps> = ({ vehicle }) => (
         <p>{vehicle.cargo_capacity}</p>
       </li>
     </ListStyle>
-    <PriceCard className="pt-3">¢ {vehicle.cost_in_credits}</PriceCard>
+    {vehicle.cost_in_credits !== 'unknown' && (
+      <PriceCard className="pt-3">¢ {vehicle.cost_in_credits}</PriceCard>
+    )}
+    {vehicle.cost_in_credits === 'unknown' && (
+      <PriceCard className="pt-3">Fora de Estoque</PriceCard>
+    )}
   </CardBody>
 )
 

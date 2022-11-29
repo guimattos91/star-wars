@@ -1,4 +1,4 @@
-import { FormType } from 'types/FormType'
+import { FormType, NormalizedFormType } from 'types/FormType'
 import { VehicleType } from 'types/VehicleType'
 
 export const normalizeFormData = (data: FormType): NormalizedFormType => ({

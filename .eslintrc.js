@@ -91,6 +91,7 @@ module.exports = {
     'import/no-unresolved': 'error',
     'import/prefer-default-export': 'off',
     'jsx-a11y/accessible-emoji': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {

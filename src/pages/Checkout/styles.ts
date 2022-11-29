@@ -1,4 +1,5 @@
 import InputMask from 'react-input-mask'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import Banner from 'assets/Banner.png'
@@ -33,6 +34,9 @@ export const InputStyled = styled.input`
   box-shadow: none;
   outline: none;
   border-style: none;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 `
 export const InputStyledSmall = styled.input`
   color: white;
@@ -51,6 +55,9 @@ export const InputMaskStyled = styled(InputMask)`
   box-shadow: none;
   outline: none;
   border-style: none;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 `
 export const InputMaskStyledSmall = styled(InputMask)`
   color: white;
@@ -65,6 +72,13 @@ export const ManufacturerTitle = styled.p`
   color: #707070;
   font-size: smaller;
   margin-bottom: 0;
+`
+export const LinkStyled = styled(Link)`
+  color: black;
+  text-decoration: none;
+  :hover {
+    color: black;
+  }
 `
 
 export const TitleCard = styled.h2`
@@ -82,5 +96,9 @@ export const ButtonStyle = styled.button`
 
   p {
     margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 0;
   }
 `

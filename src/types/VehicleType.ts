@@ -1,4 +1,5 @@
 export type VehicleType = {
+  id: string
   name: string
   model: string
   manufacturer: string
@@ -11,5 +12,4 @@ export type VehicleType = {
   consumables: string
   vehicle_class: string
   url: string
-  id: string
 }

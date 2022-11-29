@@ -23,8 +23,14 @@ const Footer: React.FC = () => {
             </Link>
 
             <div className="d-flex pb-3">
-              <PGray> Site por: </PGray>
-              <PWhite> Guilherme Mattos da Silva</PWhite>
+              <PGray className="me-2"> Site por: </PGray>
+              <PWhite
+                href="https://www.linkedin.com/in/guimattos91/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Guilherme Mattos da Silva
+              </PWhite>
             </div>
           </Col>
         </Row>

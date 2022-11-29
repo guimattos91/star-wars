@@ -1,7 +1,6 @@
 import { memo, useCallback, useEffect, useState } from 'react'
 
 import { Col, Container, Row } from 'react-bootstrap'
-import { useTranslation } from 'react-i18next'
 
 import Banner from 'assets/Banner.png'
 import Loading from 'assets/loading.gif'
@@ -23,27 +22,29 @@ import {
 } from './styles'
 
 const Home: React.FC = () => {
-  const { t, i18n } = useTranslation()
   const { vehicles, isLoading, currentPage, totalPages, error, fetchVehicles } =
     useVehicles()
   const [search, setSearch] = useState('')
+  const [hasSearch, setHasSearch] = useState(false)
+
   const handlePageChange = useCallback(
     (page: number) => fetchVehicles(page),
     [fetchVehicles],
   )
 
-  const handleSearch = useCallback(
-    () => fetchVehicles(1, search),
-    [fetchVehicles, search],
-  )
+  const handleSearch = useCallback(() => {
+    fetchVehicles(1, search)
+    setHasSearch(true)
+  }, [fetchVehicles, search, setHasSearch])
+
+  const clearSearch = useCallback(() => {
+    setSearch('')
+    fetchVehicles(1)
+    setHasSearch(false)
+  }, [fetchVehicles, setHasSearch])
 
   const setTitle = useTitle()
-  useEffect(() => setTitle('Home | Star Wars '))
-
-  useEffect(() => {
-    setTitle(t('Star Wars | Home'))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i18n.resolvedLanguage])
+  useEffect(() => setTitle('Home'))
 
   useEffect(() => {
     fetchVehicles(1)
@@ -57,9 +58,9 @@ const Home: React.FC = () => {
         <img src={Banner} style={{ width: '100% ' }} alt="banner" />
         {/* <BgImg className="img-fluid" /> */}
         <Container>
-          <Row className="p-4 d-flex justify-content-center">
+          <Row className="py-4 d-flex justify-content-center">
             <Col>
-              <DivSearch className="d-flex justify-content-center flex-wrap">
+              <DivSearch className="d-flex justify-content-center">
                 <InputStyle
                   className="p-3"
                   type="text"
@@ -67,13 +68,24 @@ const Home: React.FC = () => {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
-                <ButtonStyle
-                  type="button"
-                  onClick={handleSearch}
-                  className="p-3"
-                >
-                  <p className="px-5">Buscar</p>
-                </ButtonStyle>
+                {search.length > 0 && (
+                  <ButtonStyle
+                    type="button"
+                    onClick={handleSearch}
+                    className="p-3 mt-3 mt-md-0"
+                  >
+                    <p className="px-5">Buscar</p>
+                  </ButtonStyle>
+                )}
+                {hasSearch === true && (
+                  <ButtonStyle
+                    type="button"
+                    onClick={clearSearch}
+                    className="ms-2 p-3 mt-3 mt-md-0"
+                  >
+                    <p className="px-5">Limpar</p>
+                  </ButtonStyle>
+                )}
               </DivSearch>
             </Col>
           </Row>
@@ -125,10 +137,14 @@ const Home: React.FC = () => {
               <Col className="d-flex justify-content-center">
                 <Pagination
                   nextLabel="Next"
+                  nextClassName={
+                    currentPage === Math.ceil(totalPages) ? 'd-none' : undefined
+                  }
                   forcePage={currentPage - 1}
                   onPageChange={(p) => handlePageChange(p.selected + 1)}
                   pageCount={totalPages}
                   previousLabel="Previous"
+                  previousClassName={currentPage === 1 ? 'd-none' : undefined}
                   pageRangeDisplayed={3}
                   marginPagesDisplayed={1}
                 />

@@ -21,6 +21,10 @@ export const DivSearch = styled.div`
   margin-top: -50px;
   flex: flex;
   flex-grow: 1;
+  width: 100%;
+  @media (max-width: 576px) {
+    flex-wrap: wrap;
+  }
 `
 export const InputStyle = styled.input`
   border: none;
@@ -29,7 +33,12 @@ export const InputStyle = styled.input`
   border-radius: 5px;
   margin-right: 0.5em;
   flex: flex;
-  flex-grow: 1;
+  width: 100%;
+  :focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+  }
 `
 export const ButtonStyle = styled.button`
   background-color: #f4e426;
