@@ -22,6 +22,10 @@ export const StyleCard = styled.div`
   color: white;
   border-radius: 5px;
 `
+export const DivFlexColumn = styled.div`
+  flex: flex;
+  flex-direction: column;
+`
 export const StyleH2 = styled.h2`
   color: #f4e426;
   font-size: larger;
@@ -86,6 +90,7 @@ export const TitleCard = styled.h2`
   background-color: #000000;
   color: #f4e426;
 `
+
 export const ButtonStyle = styled.button`
   background-color: #f4e426;
   border: none;

@@ -23,6 +23,7 @@ import { FormType } from 'types/FormType'
 
 import {
   ButtonStyle,
+  DivFlexColumn,
   InputMaskStyled,
   InputMaskStyledSmall,
   InputStyled,
@@ -290,8 +291,8 @@ const Checkout: React.FC = () => {
                         </label>
                         <div className="mb-2">
                           <InputStyled
-                            type="text"
                             id="nomecartão"
+                            type="text"
                             {...register('namecard', {
                               required: 'Informe seu nome',
                             })}
@@ -314,11 +315,11 @@ const Checkout: React.FC = () => {
                             <p>{errors.cardnumber.message}</p>
                           )}
                         </div>
-                        <div className="d-flex">
-                          <div>
+                        <div className="d-flex d-flex justify-content-between">
+                          <DivFlexColumn className="">
                             <label htmlFor="valid">Validade:</label>
                             <div className="mb-2">
-                              <InputMaskStyledSmall
+                              <InputMaskStyled
                                 mask="99/99"
                                 id="valid"
                                 {...register('valid', {
@@ -329,11 +330,11 @@ const Checkout: React.FC = () => {
                               />
                               {errors.valid && <p>{errors.valid.message}</p>}
                             </div>
-                          </div>
-                          <div className="px-2">
+                          </DivFlexColumn>
+                          <DivFlexColumn className="px-2">
                             <label htmlFor="safety">Código de segurança:</label>
                             <div className="mb-2">
-                              <InputStyledSmall
+                              <InputStyled
                                 id="safety"
                                 {...register('safety', {
                                   required: 'Informe seu CPF',
@@ -343,7 +344,7 @@ const Checkout: React.FC = () => {
                               />
                               {errors.safety && <p>{errors.safety.message}</p>}
                             </div>
-                          </div>
+                          </DivFlexColumn>
                         </div>
                       </>
                     )}
