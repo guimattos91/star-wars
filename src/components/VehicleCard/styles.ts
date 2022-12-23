@@ -9,6 +9,9 @@ export const CardBody = styled.div`
   border-radius: 5px;
   font-size: small;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 `
 export const TitleCard = styled.h2`
   border-style: none;

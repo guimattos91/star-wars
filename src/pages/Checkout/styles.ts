@@ -39,8 +39,7 @@ export const InputStyled = styled.input`
   outline: none;
   border-style: none;
   width: 100%;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px 10px;
 `
 export const InputStyledSmall = styled.input`
   color: white;
@@ -60,8 +59,7 @@ export const InputMaskStyled = styled(InputMask)`
   outline: none;
   border-style: none;
   width: 100%;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px 10px;
 `
 export const InputMaskStyledSmall = styled(InputMask)`
   color: white;

@@ -6,12 +6,12 @@ import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { Link, useParams } from 'react-router-dom'
 
 import Banner from 'assets/Banner.png'
-import Loading from 'assets/loading.gif'
 
 import { useVehicles } from 'context/VehiclesContext'
 
 import Footer from 'components/Footer'
 import Header from 'components/Header'
+import LoadingComponent from 'components/LoadingComponent'
 
 import { normalizeFormData, urlToId } from 'helpers'
 
@@ -25,7 +25,6 @@ import {
   ButtonStyle,
   DivFlexColumn,
   InputMaskStyled,
-  InputMaskStyledSmall,
   InputStyled,
   InputStyledSmall,
   LinkStyled,
@@ -110,16 +109,8 @@ const Checkout: React.FC = () => {
             </Link>
             Checkout
           </StyleH2White>
-          {isLoading && (
-            <div className="d-flex justify-content-center">
-              <img
-                src={Loading}
-                alt="Loading"
-                width="auto"
-                className="img-fluid"
-              />
-            </div>
-          )}
+          <LoadingComponent />
+
           {!isLoading && (
             <form onSubmit={handleSubmit(handleFormSubmit)}>
               <Row xs={1} md={3} className="py-3">

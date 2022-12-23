@@ -4,9 +4,17 @@ export const GlobalStyle = createGlobalStyle`
 body, html {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
-main{
-  min-height: 70vh;
+#root{
+  min-height: 100vh;
 }
 
+main{
+  min-height: 67.5vh;
+}
+
+p{
+  margin: 0;
+}
 `

@@ -32,7 +32,7 @@ const TicketPayment: React.FC = () => {
   const { id } = useParams()
 
   const setTitle = useTitle()
-  useEffect(() => setTitle('Finish'))
+  useEffect(() => setTitle('Confimação de Compra'))
 
   useEffect(() => {
     if (id) fetchVehicle(String(id))

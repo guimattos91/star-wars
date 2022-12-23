@@ -20,7 +20,6 @@ export const DivSearch = styled.div`
   padding: 1em;
   margin-top: -50px;
   flex: flex;
-  flex-grow: 1;
   width: 100%;
   @media (max-width: 576px) {
     flex-wrap: wrap;
@@ -31,22 +30,36 @@ export const InputStyle = styled.input`
   background-color: white;
   color: black;
   border-radius: 5px;
-  margin-right: 0.5em;
   flex: flex;
   width: 100%;
+  padding: 1rem 1rem;
+
   :focus {
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
+  }
+  @media (max-width: 576px) {
+    margin: 0;
   }
 `
 export const ButtonStyle = styled.button`
   background-color: #f4e426;
   border: none;
   border-radius: 5px;
-  p {
-    margin: 0;
+  padding: 0.75rem 2rem 0.75rem 2rem;
+  margin: 0 0 0 0.5rem;
+  display: block;
+
+  @media (max-width: 576px) {
+    margin: 1rem 0.5rem 0 0.5rem;
   }
+`
+export const DivError = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
 export const Pagination = styled(ReactPaginate)`
