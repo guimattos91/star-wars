@@ -23,13 +23,16 @@ import { FormType } from 'types/FormType'
 
 import {
   ButtonStyle,
+  DivFlex,
   DivFlexColumn,
   InputMaskStyled,
+  InputMaskStyledSmall,
   InputStyled,
   InputStyledSmall,
   LinkStyled,
   ManufacturerTitle,
   StyleCard,
+  StyleCardFinishPurchase,
   StyleH2,
   StyleH2White,
   StyleMain,
@@ -113,9 +116,9 @@ const Checkout: React.FC = () => {
 
           {!isLoading && (
             <form onSubmit={handleSubmit(handleFormSubmit)}>
-              <Row xs={1} md={3} className="py-3">
-                <Col className="pt-3">
-                  <StyleCard className="p-3">
+              <Row className="py-3">
+                <Col xs={12} md={6} lg={4} className="pt-3">
+                  <StyleCard>
                     <StyleH2>Informações Pessoais </StyleH2>
                     <label htmlFor="nome">Nome:</label>
                     <div className="mb-2">
@@ -162,8 +165,8 @@ const Checkout: React.FC = () => {
                     </div>
                   </StyleCard>
                 </Col>
-                <Col className="pt-3">
-                  <StyleCard className="p-3">
+                <Col xs={12} md={6} lg={4} className="pt-3">
+                  <StyleCard>
                     <StyleH2>Endereços </StyleH2>
                     <label htmlFor="cep">CEP:</label>
                     <div className="mb-2">
@@ -256,92 +259,102 @@ const Checkout: React.FC = () => {
                     </div>
                   </StyleCard>
                 </Col>
-                <Col className="pt-3">
-                  <StyleCard className="p-3">
-                    <StyleH2>Formas de Pagamento </StyleH2>
-                    <ButtonStyle
-                      type="button"
-                      className="px-2 ms-0"
-                      style={{ backgroundColor: `${creditButtonColor}` }}
-                      onClick={choosePaymentCreditCard}
-                    >
-                      Cartão de crédito
-                    </ButtonStyle>
-                    <ButtonStyle
-                      type="button"
-                      className="px-2"
-                      style={{ backgroundColor: `${ticketButtonColor}` }}
-                      onClick={choosePaymentTicket}
-                    >
-                      Boleto Bancário
-                    </ButtonStyle>
-                    {creditCardOn && !ticketOn && (
-                      <>
-                        <label htmlFor="nomecartão">
-                          Nome do titular do cartão:
-                        </label>
-                        <div className="mb-2">
-                          <InputStyled
-                            id="nomecartão"
-                            type="text"
-                            {...register('namecard', {
-                              required: 'Informe seu nome',
-                            })}
-                            required
-                          />
-                          {errors.namecard && <p>{errors.namecard.message}</p>}
-                        </div>
-                        <label htmlFor="cardnumber">Número do cartão:</label>
-                        <div className="mb-2">
-                          <InputStyled
-                            type="cardnumber"
-                            id="cardnumber"
-                            {...register('cardnumber', {
-                              required: 'Informe o número de seu cartão',
-                            })}
-                            className="mb-2"
-                            required
-                          />
-                          {errors.cardnumber && (
-                            <p>{errors.cardnumber.message}</p>
-                          )}
-                        </div>
-                        <div className="d-flex d-flex justify-content-between">
-                          <DivFlexColumn className="">
-                            <label htmlFor="valid">Validade:</label>
-                            <div className="mb-2">
-                              <InputMaskStyled
-                                mask="99/99"
-                                id="valid"
-                                {...register('valid', {
-                                  required: 'Informe a data do seu cartão',
-                                })}
-                                className="mb-2"
-                                required
-                              />
-                              {errors.valid && <p>{errors.valid.message}</p>}
+                <Col xs={12} lg={4} className="pt-3">
+                  <DivFlexColumn>
+                    <StyleCard>
+                      <StyleH2>Formas de Pagamento </StyleH2>
+                      <DivFlex>
+                        <ButtonStyle
+                          type="button"
+                          className="px-2 ms-0"
+                          style={{ backgroundColor: `${creditButtonColor}` }}
+                          onClick={choosePaymentCreditCard}
+                        >
+                          Cartão de crédito
+                        </ButtonStyle>
+                        <ButtonStyle
+                          type="button"
+                          className="px-2"
+                          style={{ backgroundColor: `${ticketButtonColor}` }}
+                          onClick={choosePaymentTicket}
+                        >
+                          Boleto Bancário
+                        </ButtonStyle>
+                      </DivFlex>
+                      {creditCardOn && !ticketOn && (
+                        <>
+                          <label htmlFor="nomecartão">
+                            Nome do titular do cartão:
+                          </label>
+                          <div className="mb-2">
+                            <InputStyled
+                              id="nomecartão"
+                              type="text"
+                              {...register('namecard', {
+                                required: 'Informe seu nome',
+                              })}
+                              required
+                            />
+                            {errors.namecard && (
+                              <p>{errors.namecard.message}</p>
+                            )}
+                          </div>
+                          <label htmlFor="cardnumber">Número do cartão:</label>
+                          <div className="mb-2">
+                            <InputMaskStyled
+                              mask="9999 9999 9999 9999"
+                              type="cardnumber"
+                              id="cardnumber"
+                              {...register('cardnumber', {
+                                required: 'Informe o número de seu cartão',
+                              })}
+                              className="mb-2"
+                              required
+                            />
+                            {errors.cardnumber && (
+                              <p>{errors.cardnumber.message}</p>
+                            )}
+                          </div>
+                          <div className="d-flex justify-content-between">
+                            <div>
+                              <label htmlFor="valid">Validade:</label>
+                              <div className="mb-2">
+                                <InputMaskStyledSmall
+                                  mask="99/99"
+                                  id="valid"
+                                  {...register('valid', {
+                                    required: 'Informe a data do seu cartão',
+                                  })}
+                                  className="mb-2"
+                                  required
+                                />
+                                {errors.valid && <p>{errors.valid.message}</p>}
+                              </div>
                             </div>
-                          </DivFlexColumn>
-                          <DivFlexColumn className="px-2">
-                            <label htmlFor="safety">Código de segurança:</label>
-                            <div className="mb-2">
-                              <InputStyled
-                                id="safety"
-                                {...register('safety', {
-                                  required: 'Informe seu CPF',
-                                })}
-                                className="mb-2"
-                                required
-                              />
-                              {errors.safety && <p>{errors.safety.message}</p>}
+                            <div className="ms-2">
+                              <label htmlFor="safety">
+                                Código de segurança:
+                              </label>
+                              <div className="mb-2">
+                                <InputMaskStyled
+                                  id="safety"
+                                  {...register('safety', {
+                                    required: 'Informe seu CPF',
+                                  })}
+                                  mask="999"
+                                  className="mb-2"
+                                  required
+                                />
+                                {errors.safety && (
+                                  <p>{errors.safety.message}</p>
+                                )}
+                              </div>
                             </div>
-                          </DivFlexColumn>
-                        </div>
-                      </>
-                    )}
-                  </StyleCard>
-                  <div className="pt-3">
-                    <StyleCard className="p-3 ">
+                          </div>
+                        </>
+                      )}
+                    </StyleCard>
+                    <StyleCardFinishPurchase>
                       {vehicle && (
                         <>
                           <ManufacturerTitle>
@@ -380,8 +393,8 @@ const Checkout: React.FC = () => {
                           </div>
                         </>
                       )}
-                    </StyleCard>
-                  </div>
+                    </StyleCardFinishPurchase>
+                  </DivFlexColumn>
                 </Col>
               </Row>
             </form>

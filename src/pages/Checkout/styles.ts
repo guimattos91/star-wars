@@ -21,10 +21,50 @@ export const StyleCard = styled.div`
   background-color: black;
   color: white;
   border-radius: 5px;
+  padding: 1rem;
+
+  @media (max-width: 991px) {
+    height: 100%;
+  }
+`
+export const StyleCardFinishPurchase = styled.div`
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-top: 1rem;
+
+  @media (max-width: 991px) {
+    margin-top: 0;
+    margin-left: 1.5rem;
+    min-width: 336px;
+  }
+  @media (max-width: 767px) {
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-left: 0;
+    min-width: 100%;
+  }
+`
+export const DivFlex = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 1023px) {
+    flex-direction: column;
+  }
 `
 export const DivFlexColumn = styled.div`
-  flex: flex;
+  display: flex;
   flex-direction: column;
+
+  @media (max-width: 991px) {
+    flex-direction: row;
+  }
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `
 export const StyleH2 = styled.h2`
   color: #f4e426;
@@ -49,6 +89,7 @@ export const InputStyledSmall = styled.input`
   outline: none;
   border-style: none;
   max-width: 80px;
+  padding: 5px 10px;
 `
 
 export const InputMaskStyled = styled(InputMask)`
@@ -68,7 +109,9 @@ export const InputMaskStyledSmall = styled(InputMask)`
   box-shadow: none;
   outline: none;
   border-style: none;
-  max-width: 80px;
+  width: 100%;
+  padding: 5px 10px;
+  max-width: 150px;
 `
 export const ManufacturerTitle = styled.p`
   color: #707070;
@@ -101,7 +144,7 @@ export const ButtonStyle = styled.button`
     margin: 0;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     margin-left: 0;
   }
 `
