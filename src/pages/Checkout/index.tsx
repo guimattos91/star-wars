@@ -96,8 +96,19 @@ const Checkout: React.FC = () => {
   }, [cepValue, fetchAddress, lastCep, handleInputFocus])
 
   useEffect(() => {
+    setValue('logradouro', address?.logradouro ?? '')
+    setValue('bairro', address?.bairro ?? '')
+    setValue('estado', address?.uf ?? '')
+    setValue('cidade', address?.localidade ?? '')
     handleFetchAddress()
-  }, [handleFetchAddress])
+  }, [
+    handleFetchAddress,
+    address?.logradouro,
+    address?.bairro,
+    address?.uf,
+    address?.localidade,
+    setValue,
+  ])
 
   // useEffect(() => {
   //   const sanitizedCEP = cepValue?.replaceAll(/\D/g, '')
@@ -110,11 +121,6 @@ const Checkout: React.FC = () => {
   //     handleInputFocus()
   //   }
   // }, [cepValue, fetchAddress, setFocus, lastCep, handleInputFocus])
-
-  setValue('logradouro', address?.logradouro ?? '')
-  setValue('bairro', address?.bairro ?? '')
-  setValue('estado', address?.uf ?? '')
-  setValue('cidade', address?.localidade ?? '')
 
   return (
     <>
