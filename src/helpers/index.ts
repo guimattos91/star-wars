@@ -6,7 +6,7 @@ export const normalizeFormData = (data: FormType): NormalizedFormType => ({
   cpf: Number(data.cpf),
   phone: Number(data.phone),
   cep: Number(data.cep),
-  número: Number(data.número),
+  numero: Number(data.numero),
   cardnumber: data.cardnumber.length ? Number(data.cardnumber) : undefined,
   valid: data.valid.length ? Number(data.valid) : undefined,
   safety: data.safety.length ? Number(data.safety) : undefined,
