@@ -78,21 +78,6 @@ const Checkout: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // const handleInputFocus = useCallback(() => {
-  //   if ('numero'.length < 0 && 'logradouro'.length > 0) {
-  //     setFocus('numero')
-  //   }
-  // }, [setFocus])
-
-  // const handleFetchAddress = useCallback(async () => {
-  //   const sanitizedCEP = cepValue?.replaceAll(/\D/g, '')
-
-  //   if (sanitizedCEP?.length === 8 && cepValue !== lastCep) {
-  //     setLastCep(cepValue)
-  //     await fetchAddress(sanitizedCEP)
-  //     handleInputFocus()
-  //   }
-  // }, [cepValue, fetchAddress, lastCep, handleInputFocus])
   const handleInputFocus = useCallback(() => {
     if (
       address &&
@@ -112,7 +97,9 @@ const Checkout: React.FC = () => {
       setLastCep(cepValue)
       fetchAddress(sanitizedCEP)
     }
-    handleInputFocus()
+    if (sanitizedCEP?.length === 8) {
+      handleInputFocus()
+    }
   }, [cepValue, fetchAddress, setFocus, lastCep, handleInputFocus])
 
   setValue('logradouro', address?.logradouro ?? '')
