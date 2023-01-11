@@ -71,36 +71,45 @@ const Checkout: React.FC = () => {
     [id, navigate, paymentType],
   )
 
-  useEffect(() => setTitle('Checkout'))
-
   useEffect(() => {
+    setTitle('Checkout')
     if (id) fetchVehicle(Number(id))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleInputFocus = useCallback(() => {
-    if (
-      address &&
-      address.logradouro &&
-      address.logradouro.length > 0 &&
-      address.bairro &&
-      address.bairro.length > 0
-    ) {
+    if (address && address.logradouro && address.logradouro.length > 0) {
       setFocus('numero')
     }
   }, [setFocus, address])
 
-  useEffect(() => {
+  const handleFetchAddress = useCallback(async () => {
     const sanitizedCEP = cepValue?.replaceAll(/\D/g, '')
 
     if (sanitizedCEP?.length === 8 && cepValue !== lastCep) {
       setLastCep(cepValue)
-      fetchAddress(sanitizedCEP)
+      await fetchAddress(sanitizedCEP)
     }
     if (sanitizedCEP?.length === 8) {
       handleInputFocus()
     }
-  }, [cepValue, fetchAddress, setFocus, lastCep, handleInputFocus])
+  }, [cepValue, fetchAddress, lastCep, handleInputFocus])
+
+  useEffect(() => {
+    handleFetchAddress()
+  }, [handleFetchAddress])
+
+  // useEffect(() => {
+  //   const sanitizedCEP = cepValue?.replaceAll(/\D/g, '')
+
+  //   if (sanitizedCEP?.length === 8 && cepValue !== lastCep) {
+  //     setLastCep(cepValue)
+  //     fetchAddress(sanitizedCEP)
+  //   }
+  //   if (sanitizedCEP?.length === 8) {
+  //     handleInputFocus()
+  //   }
+  // }, [cepValue, fetchAddress, setFocus, lastCep, handleInputFocus])
 
   setValue('logradouro', address?.logradouro ?? '')
   setValue('bairro', address?.bairro ?? '')
