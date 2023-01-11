@@ -11,7 +11,7 @@ body, html {
 }
 
 main{
-  min-height: 67.5vh;
+  min-height: 76vh;
 }
 
 p{

@@ -4,6 +4,13 @@ import styled from 'styled-components'
 
 import Banner from 'assets/Banner.png'
 
+interface IButtonCreditCard {
+  paymentType: string
+}
+interface IButtonTicket {
+  paymentType: string
+}
+
 export const StyleMain = styled.main`
   background-color: #282a36;
 `
@@ -71,6 +78,26 @@ export const StyleH2 = styled.h2`
   font-size: larger;
   font-weight: 700;
 `
+export const InputLoadingDiv = styled.div`
+  color: white;
+  background-color: #333333;
+  border-radius: 5px;
+  box-shadow: none;
+  outline: none;
+  border-style: none;
+  width: 100%;
+  padding: 5px 10px;
+`
+export const InputLoadingDivSmall = styled.div`
+  color: white;
+  background-color: #333333;
+  border-radius: 5px;
+  box-shadow: none;
+  outline: none;
+  border-style: none;
+  max-width: 80px;
+  padding: 5px 10px;
+`
 export const InputStyled = styled.input`
   color: white;
   background-color: #333333;
@@ -81,7 +108,7 @@ export const InputStyled = styled.input`
   width: 100%;
   padding: 5px 10px;
 `
-export const InputStyledSmall = styled.input`
+export const InputStyledSmall = styled.input.attrs(({ ref }) => ({ ref }))`
   color: white;
   background-color: #333333;
   border-radius: 5px;
@@ -134,6 +161,40 @@ export const TitleCard = styled.h2`
 
 export const ButtonStyle = styled.button`
   background-color: #f4e426;
+  border: none;
+  border-radius: 5px;
+  margin: 0.5em;
+  padding: 0.5em 2em 0.5em 2em;
+  font-weight: 700;
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: 1023px) {
+    margin-left: 0;
+  }
+`
+export const ButtonCreditCardStyled = styled.button<IButtonCreditCard>`
+  background-color: ${({ paymentType }) =>
+    paymentType === 'creditCard' ? '#F4E426' : '#cccccc'};
+  border: none;
+  border-radius: 5px;
+  margin: 0.5em;
+  padding: 0.5em 2em 0.5em 2em;
+  font-weight: 700;
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: 1023px) {
+    margin-left: 0;
+  }
+`
+export const ButtonTicketStyled = styled.button<IButtonTicket>`
+  background-color: ${({ paymentType }) =>
+    paymentType === 'ticket' ? '#F4E426' : '#cccccc'};
   border: none;
   border-radius: 5px;
   margin: 0.5em;

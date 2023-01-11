@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 
 import ReactDOM from 'react-dom/client'
 
+import { AdressProvider } from 'context/AddressContext'
 import { VehiclesProvider } from 'context/VehiclesContext'
 
 import 'services/i18n'
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Suspense>
       <GlobalStyle />
       <VehiclesProvider>
-        <App />
+        <AdressProvider>
+          <App />
+        </AdressProvider>
       </VehiclesProvider>
     </Suspense>
   </React.StrictMode>,

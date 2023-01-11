@@ -5,12 +5,12 @@ import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { Link, useParams } from 'react-router-dom'
 
 import Banner from 'assets/Banner.png'
-import Loading from 'assets/loading.gif'
 
 import { useVehicles } from 'context/VehiclesContext'
 
 import Footer from 'components/Footer'
 import Header from 'components/Header'
+import LoadingComponent from 'components/LoadingComponent'
 
 import { urlToId } from 'helpers'
 
@@ -48,22 +48,13 @@ const TicketPayment: React.FC = () => {
         <Container>
           {vehicle && (
             <StyleH2White className="pt-3">
-              <Link to={`/creditcardpayment/${urlToId(vehicle.url)}`}>
+              <Link to={`/checkout/${urlToId(vehicle.url)}`}>
                 <AiOutlineArrowLeft color="white" />
               </Link>
               Confirmação
             </StyleH2White>
           )}
-          {isLoading && (
-            <div className="d-flex justify-content-center">
-              <img
-                src={Loading}
-                alt="Loading"
-                width="auto"
-                className="img-fluid"
-              />
-            </div>
-          )}
+          <LoadingComponent />
           {!isLoading && (
             <Row className="py-4 d-flex justify-content-center">
               <Col className="d-flex justify-content-center">

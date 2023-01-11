@@ -4,7 +4,7 @@ export type FormType = {
   cpf: string
   phone: string
   cep: string
-  número: string
+  numero: string
   logradouro: string
   complemento: string
   bairro: string
@@ -21,7 +21,7 @@ export type NormalizedFormType = {
   cpf: number
   phone: number
   cep: number
-  número: number
+  numero: number
   logradouro: string
   complemento: string
   bairro: string
