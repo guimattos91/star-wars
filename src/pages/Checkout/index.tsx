@@ -110,18 +110,6 @@ const Checkout: React.FC = () => {
     setValue,
   ])
 
-  // useEffect(() => {
-  //   const sanitizedCEP = cepValue?.replaceAll(/\D/g, '')
-
-  //   if (sanitizedCEP?.length === 8 && cepValue !== lastCep) {
-  //     setLastCep(cepValue)
-  //     fetchAddress(sanitizedCEP)
-  //   }
-  //   if (sanitizedCEP?.length === 8) {
-  //     handleInputFocus()
-  //   }
-  // }, [cepValue, fetchAddress, setFocus, lastCep, handleInputFocus])
-
   return (
     <>
       <Header />
@@ -496,9 +484,7 @@ const Checkout: React.FC = () => {
                               </div>
                             </div>
                             <div className="ms-2">
-                              <label htmlFor="safety">
-                                Código de segurança:
-                              </label>
+                              <label htmlFor="safety">CVV:</label>
                               <div className="mb-2">
                                 <InputMaskStyled
                                   id="safety"
